@@ -98,7 +98,7 @@ class StoreProfile extends Component {
                         <TouchableOpacity style={style.imageBox2} 
                              onPress={() => this._logOut()}
                         >
-                            <ImageBackground  style={{height: 40, width: 40}} source={require('../Assets/Icons/log_out.png')} />
+                            <ImageBackground  style={{height: 40, width: 40}} source={require('../Assets/Icons/SignOut_100px.png')} />
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -106,25 +106,25 @@ class StoreProfile extends Component {
                     { (this.props.user.user) ? <Text style={style.loginText}>{this.props.user.user.name}</Text> : <ActivityIndicator/>}
                     <View style={style.detailTextBox}>
                         <View style={style.iconBox}>
-                            <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/email.png')} />
+                            <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/Envelope_100px.png')} />
                         </View>
                         <Text style={style.textTop}>{this.props.user.user.email}</Text>
                     </View>
                     <View style={style.detailTextBox}>
                         <View style={style.iconBox}>
-                            <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/phone2.png')} />
+                            <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/Phone_100px.png')} />
                         </View>
                         <Text style={style.textTop}>{this.props.user.user.phone}</Text>
                     </View>
                     <View style={style.detailTextBox}>
                         <View style={style.iconBox}>
-                            <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/gender.png')} />
+                            <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/Transgender_100px.png')} />
                         </View>
                         <Text style={style.textTop}>{this.props.user.gender}</Text>
                     </View>
                     <View style={style.detailTextBox}>
                         <View style={[style.iconBox, { height: 70 }]}>
-                            <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/ig.png')} />
+                            <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/Address_100px.png')} />
                             {/* </ImageBackground> */}
                         </View>
                         <Text style={style.textTop}>{this.props.user.user.address}</Text>

@@ -72,21 +72,36 @@ class Gateway extends Component {
 
 	handlePay = async () => {
 		const expiry = this.state.expiry.split('/')
-		const data = {
-			product: this.state.data.transaction.product.map(item => item._id), 
-			rentDate: this.state.data.dateNow, 
-			returnDate: this.state.data.dateAgo, 
-			totalPrice: this.state.data.total, 
-			totalItem: this.state.data.transaction.product.length, 
-			ccnumber: this.state.number, 
-			month: parseInt(expiry[0]), 
-			year: parseInt(expiry[1]), 
-			cvc: parseInt(this.state.cvc)
+		
+		const data = {}
+
+		if (this.state.data.endpoint === 'rental-transaction') {
+				data.product = this.state.data.transaction.product.map(item => item._id), 
+				data.rentDate = this.state.data.dateNow, 
+				data.returnDate = this.state.data.dateAgo, 
+				data.totalPrice = this.state.data.total, 
+				data.totalItem = this.state.data.transaction.product.length, 
+				data.ccnumber = this.state.number, 
+				data.month = parseInt(expiry[0]), 
+				data.year = parseInt(expiry[1]), 
+				data.cvc = parseInt(this.state.cvc)
+		} else {
+				data.mountain = this.state.data.mountain,
+				data.totalPerson = this.state.data.totalPerson,
+				data.totalPrice = this.state.data.totalPrice,
+				data.leavingDate = this.state.data.leavingDate,
+				data.returningDate = this.state.data.returningDate,
+				data.ccnumber = this.state.number, 
+				data.month = parseInt(expiry[0]), 
+				data.year = parseInt(expiry[1]), 
+				data.cvc = parseInt(this.state.cvc)
+			
 		}
+
 
 		console.warn('data', data)
 
-		await this.props.dispatch(createTransaction(data, this.deviceID, this.state.token))
+		await this.props.dispatch(createTransaction(this.state.data.endpoint, data, this.deviceID, this.state.token))
 	}
 
 	render() {

@@ -88,7 +88,7 @@ class EditProfileStore extends Component {
                     <ScrollView>
                         <View style={style.detailTextBox}>
                             <View style={[style.iconBox, { height: 50 }]}>
-                                <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/email.png')} />
+                                <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/Envelope_100px.png')} />
                             </View>
                             <TextInput
                                 onChangeText={text => this.setState({ name: text })}
@@ -96,7 +96,7 @@ class EditProfileStore extends Component {
                         </View>
                         <View style={style.detailTextBox}>
                             <View style={[style.iconBox, { height: 50 }]}>
-                                <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/phone2.png')} />
+                                <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/Phone_100px.png')} />
                             </View>
                             <TextInput
                                 onChangeText={text => this.setState({ hp: text })}
@@ -104,7 +104,7 @@ class EditProfileStore extends Component {
                         </View>
                         <View style={style.detailTextBox}>
                             <View style={[style.iconBox, { height: 50 }]}>
-                                <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/gender.png')} />
+                                <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/Address_100px.png')} />
                             </View>
                             <TextInput
                                 onChangeText={text => this.setState({ address: text })}
@@ -112,7 +112,7 @@ class EditProfileStore extends Component {
                         </View>
                         <View style={style.detailTextBox}>
                             <View style={[style.iconBox, { height: 50 }]}>
-                                <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/ig.png')} />
+                                <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/Resume_100px.png')} />
                             </View>
                             <TextInput
                                 onChangeText={text => this.setState({ description: text })}

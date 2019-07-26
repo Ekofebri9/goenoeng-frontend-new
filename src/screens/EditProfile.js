@@ -83,7 +83,7 @@ class EditProfile extends Component {
                     <ScrollView>
                         <View style={style.detailTextBox}>
                             <View style={[style.iconBox, { height: 50 }]}>
-                                <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/email.png')} />
+                                <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/Envelope_100px.png')} />
                             </View>
                             <TextInput
                                 onChangeText={text => this.setState({ name: text })}
@@ -108,7 +108,7 @@ class EditProfile extends Component {
                         </View> */}
                         <View style={style.detailTextBox}>
                             <View style={[style.iconBox, { height: 50 }]}>
-                                <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/phone2.png')} />
+                                <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/Phone_100px.png')} />
                             </View>
                             <TextInput
                                 onChangeText={text => this.setState({ hp: text })}
@@ -116,13 +116,13 @@ class EditProfile extends Component {
                         </View>
                         <View style={style.detailTextBox}>
                             <View style={[style.iconBox, { height: 50 }]}>
-                                <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/gender.png')} />
+                                <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/Transgender_100px.png')} />
                             </View>
                             <TextInput style={style.textTop}>{this.state.gender}</TextInput>
                         </View>
                         <View style={style.detailTextBox}>
                             <View style={[style.iconBox, { height: 50 }]}>
-                                <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/gender.png')} />
+                                <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/Address_100px.png')} />
                             </View>
                             <TextInput
                                 onChangeText={text => this.setState({ address: text })}

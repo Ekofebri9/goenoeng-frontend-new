@@ -238,8 +238,6 @@ class MountainDetail extends Component {
                             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
                                 <Button
                                     onPress={() => this.props.navigation.navigate('BookingMountain', {
-                                        userId: this.state.userId,
-                                        userName: Users.name,
                                         mountainId: this.state.mountainData._id,
                                         mountainPrice: this.state.mountainData.price
                                     })}

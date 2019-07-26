@@ -87,7 +87,7 @@ class Transaction extends Component {
                     <Text style={styles.textTotal}>Total Price</Text>
                     < Text style={styles.numberTotal} >{this.priceFormat(total)}</Text>
                 </View>
-                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Gateway', {total, transaction: this.state.transaction, lama: this.state.lama, dateNow, dateAgo})}>
+                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Gateway', {total, transaction: this.state.transaction, lama: this.state.lama, dateNow, dateAgo, endpoint: 'rental-transaction'})}>
                     <Text style={{ fontSize: 25 }}>SEWA</Text>
                 </TouchableOpacity>
             </View>

@@ -221,7 +221,14 @@ export default class BookingMountain extends Component {
                     <Footer style={{backgroundColor:'transparent'}}>
                         
                     <Button
-                                // onPress={this.onPressCreate}
+                                onPress={() => this.props.navigation.navigate('Gateway', {
+                                    endpoint: 'booking', 
+                                    mountain: this.props.navigation.state.params.mountainId,
+                                    totalPerson: this.state.countPeople,
+                                    totalPrice: this.state.totalPrice,
+                                    leavingDate: this.state.goingDate,
+                                    returningDate: this.state.comeBackDate
+                                })}
                                 style={{
                                     justifyContent: 'center', 
                                     alignSelf: 'center', 
