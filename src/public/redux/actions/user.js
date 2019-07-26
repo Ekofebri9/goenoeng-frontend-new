@@ -11,8 +11,7 @@ export const login = (email, password, level) => {
             }, { headers: { 'x-app-name': 'menung982998372771' } })
     }
 }
-
-export const register = (email, password, name, address, phone, level) => {
+export const register = (email, password, name, address, phone) => {
     return {
         type: 'POST_REGISTER',
         payload: axios.post(`${Url}/users/register`,
@@ -22,8 +21,7 @@ export const register = (email, password, name, address, phone, level) => {
                 password_confirmation: password,
                 name: name,
                 address: address,
-                phone: phone,
-                level: level
+                phone: phone
             }, { headers: { 'x-app-name': 'menung982998372771' } })
     }
 }
@@ -125,25 +123,65 @@ export const addProduct = (token, data) => {
 
 export const editProduct = (token, data) => {
     // console.log(token)
-    console.log(data)
-    let body = new FormData();
-    if (data.imageProfile !== '') {
-        body.append('images', {
-            uri: data.image.uri,
-            name: data.image.fileName,
-            type: 'image/jpg'
-        })
-    }
-    body.append('name_product', data.name)
-    body.append('price', data.price)
-    body.append('stok', data.stock)
-    body.append('description', data.description)
+    // console.log(data)
+    // let body = new FormData();
+    // if (data.imageProfile !== '') {
+    //     body.append('images', {
+    //         uri: data.image.uri,
+    //         name: data.image.fileName,
+    //         type: 'image/jpg'
+    //     })
+    // }
+    // body.append('name_product', data.name)
+    // body.append('price', data.price)
+    // body.append('stok', data.stock)
+    // body.append('description', data.description)
     return {
         type: 'EDIT_PRODUCT',
-        payload: axios.patch(`${Url}/partners/product/${data.id}`, body
+        payload: axios.patch(`${Url}/partners/product/${data.id}`,
+        {
+            name_product: data.name,
+            // image: data.description,
+            price: data.prce,
+            stok: data.stock,
+            description: data.description,
+            // image: data.imageProfile.uri
+        }
         ,{ headers: { 'x-app-name': 'menung982998372771', 'x-auth-token': token}})
     }
 }  
+
+export const registerUser = (email,password,name,address,phone) => {
+    return {
+        type: 'POST_REGISTER',
+        payload: axios.post(`${Url}/users/register`,
+        {
+            email: email,
+            password: password,
+            password_confirmation: password,
+            name: name,
+            address: address,
+            phone: phone
+        },{ headers: { 'x-app-name': 'menung982998372771' }})
+    }
+} 
+
+export const registerPartner = (email,password,name,address,phone,latitude, longitude) => {
+    return {
+        type: 'POST_REGISTER',
+        payload: axios.post(`${Url}/users/register`,
+        {
+            email: email,
+            password: password,
+            password_confirmation: password,
+            name: name,
+            address: address,
+            phone: phone,
+            latitude: latitude,
+            longitude: longitude
+        },{ headers: { 'x-app-name': 'menung982998372771' }})
+    }
+}
 
 exports.createTransaction = (data, playerId, token) => {
     return {

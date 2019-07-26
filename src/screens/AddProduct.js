@@ -11,8 +11,7 @@ class AddProduct extends Component {
         super(props)
         this.state = {
             stock: 0,
-           // imagephoto: require('../Assets/Icons/Placeholder.jpg'),
-           imagephoto: require('../Assets/Icons/Pencil_100px.png'),
+            imagephoto: require('../Assets/Icons/Placeholder.jpg'),
             imageProfile: '',
             name: '',
             price: '',

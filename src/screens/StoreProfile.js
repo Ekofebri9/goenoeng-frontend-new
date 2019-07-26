@@ -41,6 +41,11 @@ class Profile extends Component {
     navigation.navigate("EditProfileStore")
   }
 
+  _logOut = async () => {
+    await AsyncStorage.clear();
+    this.props.navigation.navigate('Auth');
+  }
+
   render() {
     // console.log("this.props.user");
     // const {user} = this.props.user
@@ -52,7 +57,7 @@ class Profile extends Component {
           
             <ImageBackground style={style.imageBox} source={{ uri: this.props.user.image }} />
             
-            <TouchableOpacity style={style.imageBox2}>
+            <TouchableOpacity style={style.imageBox2} onPress={() => this._logOut()}>
               <ImageBackground style={{ height: 40, width: 40 }} source={require('../Assets/Icons/log_out.png')} />
             </TouchableOpacity>
           </View>

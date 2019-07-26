@@ -118,7 +118,7 @@ class EditProfile extends Component {
                             <View style={[style.iconBox, { height: 50 }]}>
                                 <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/gender.png')} />
                             </View>
-                            <TextInput style={style.textTop}>Male</TextInput>
+                            <TextInput style={style.textTop}>{this.state.gender}</TextInput>
                         </View>
                         <View style={style.detailTextBox}>
                             <View style={[style.iconBox, { height: 50 }]}>
@@ -128,14 +128,14 @@ class EditProfile extends Component {
                                 onChangeText={text => this.setState({ address: text })}
                                 style={style.textTop} >{this.state.address}</TextInput>
                         </View>
-                        <View style={style.detailTextBox}>
+                        {/* <View style={style.detailTextBox}>
                             <View style={[style.iconBox, { height: 50 }]}>
                                 <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/ig.png')} />
                             </View>
                             <TextInput
                                 onChangeText={text => this.setState({ image: text })}
                                 style={style.textTop} >{this.state.image}</TextInput>
-                        </View>
+                        </View> */}
                         <TouchableOpacity style={[style.buttonAddProduct, { alignSelf: 'center', width: widthWindow - 200, marginBottom: 20 }]} onPress={() => this.save()}>
                             <Text style={[style.loginText, { color: 'white' }]}>Save</Text>
                         </TouchableOpacity>

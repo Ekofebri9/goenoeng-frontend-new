@@ -1,27 +1,30 @@
 import React, { Component } from 'react';
 import {
-    View, Text, StyleSheet, Dimensions, ImageBackground, TextInput, TouchableOpacity, KeyboardAvoidingView, AsyncStorage
+    Alert, View, Text, AsyncStorage, Dimensions, ImageBackground, TextInput, TouchableOpacity, KeyboardAvoidingView
 } from 'react-native';
 import style from '../Assets/Style'
-import { connect } from 'react-redux'
 import { ScrollView } from 'react-native-gesture-handler';
-import { updateUser } from '../public/redux/actions/user'
+import { connect } from 'react-redux'
+import { updatePartner, fetchPartner } from '../public/redux/actions/user'
 import ImagePicker from 'react-native-image-picker'
+// import console = require('console');
 
 const widthWindow = Dimensions.get('window').width
-class EditProfile extends Component {
+const heightWindow = Dimensions.get('window').height
+class EditProfileStore extends Component {
     constructor(props) {
         super(props);
+        // const {user} = this.props.user.user
+        console.log(this.props.user.user)
         this.state = {
             name: this.props.user.user.name,
-            // email: 'Try Satria@ymail.com',
-            // password: '12456789',
+            // email: this.props.user.user.email,
+            description: this.props.user.user.description,
             hp: this.props.user.user.phone,
-            gender: this.props.user.gender,
             address: this.props.user.user.address,
             image: this.props.user.image,
             imageProfile: '',
-            error: ''
+            error: 'user.name',
         };
     }
 
@@ -33,11 +36,11 @@ class EditProfile extends Component {
     save = async () => {
         let data = await AsyncStorage.getItem('token')
         // console.log(data)
-        this.props.dispatch(updateUser(data, this.state))
+        this.props.dispatch(updatePartner(data, this.state))
         // this.props.dispatch(fetchPartner(data))
         this.props.navigation.goBack();
     }
-    
+
     handleUpdateImage = async () => {
         const options = {
             noData: true,
@@ -61,9 +64,11 @@ class EditProfile extends Component {
         })
     }
 
+
     render() {
         // console.log("this.state.email");
         // const {state} = this.state
+        // console.log(this.state)
         return (
             <View>
                 <View style={style.backgroundUp}>
@@ -74,12 +79,12 @@ class EditProfile extends Component {
                                 <ImageBackground style={style.imageBox} source={{ uri: this.state.image }} />
                             }
                         </TouchableOpacity>
-                        <View style={style.imageBox2}>
+                        {/* <View style={style.imageBox2}>
                             <ImageBackground style={{ height: 40, width: 40 }} source={require('../Assets/Icons/log_out.png')} />
-                        </View>
+                        </View> */}
                     </View>
                 </View>
-                <KeyboardAvoidingView style={style.loginBox} behavior="padding" enabled keyboardVerticalOffset={20}>
+                <KeyboardAvoidingView style={[style.loginBox, { height: heightWindow / 1.6, width: widthWindow - 80 }]} behavior="padding" enabled keyboardVerticalOffset={20}>
                     <ScrollView>
                         <View style={style.detailTextBox}>
                             <View style={[style.iconBox, { height: 50 }]}>
@@ -87,38 +92,15 @@ class EditProfile extends Component {
                             </View>
                             <TextInput
                                 onChangeText={text => this.setState({ name: text })}
-                                style={style.textTop} >{this.state.name}</TextInput>
+                                style={style.textTop} >{this.props.user.user.name}</TextInput>
                         </View>
-                        {/* <View style={style.detailTextBox}>
-                            <View style={[style.iconBox, { height: 50 }]}>
-                                <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/email.png')} />
-                            </View>
-                            <TextInput
-                                onChangeText={text => this.setState({ email: text })}
-                                style={style.textTop} >{this.state.email}</TextInput>
-                        </View> */}
-                        {/* <View style={style.detailTextBox}>
-                            <View style={[style.iconBox, { height: 50 }]}>
-                                <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/phone2.png')} />
-                            </View>
-                            <TextInput
-                                onChangeText={text => this.setState({ password: text })}
-                                secureTextEntry
-                                style={style.textTop} >{this.state.password}</TextInput>
-                        </View> */}
                         <View style={style.detailTextBox}>
                             <View style={[style.iconBox, { height: 50 }]}>
                                 <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/phone2.png')} />
                             </View>
                             <TextInput
                                 onChangeText={text => this.setState({ hp: text })}
-                                style={style.textTop} >{this.state.hp}</TextInput>
-                        </View>
-                        <View style={style.detailTextBox}>
-                            <View style={[style.iconBox, { height: 50 }]}>
-                                <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/gender.png')} />
-                            </View>
-                            <TextInput style={style.textTop}>Male</TextInput>
+                                style={style.textTop} >{this.props.user.user.phone}</TextInput>
                         </View>
                         <View style={style.detailTextBox}>
                             <View style={[style.iconBox, { height: 50 }]}>
@@ -126,15 +108,15 @@ class EditProfile extends Component {
                             </View>
                             <TextInput
                                 onChangeText={text => this.setState({ address: text })}
-                                style={style.textTop} >{this.state.address}</TextInput>
+                                style={style.textTop} >{this.props.user.user.address}</TextInput>
                         </View>
                         <View style={style.detailTextBox}>
                             <View style={[style.iconBox, { height: 50 }]}>
                                 <ImageBackground style={style.imageIcon} source={require('../Assets/Icons/ig.png')} />
                             </View>
                             <TextInput
-                                onChangeText={text => this.setState({ image: text })}
-                                style={style.textTop} >{this.state.image}</TextInput>
+                                onChangeText={text => this.setState({ description: text })}
+                                style={style.textTop} >{this.props.user.description}</TextInput>
                         </View>
                         <TouchableOpacity style={[style.buttonAddProduct, { alignSelf: 'center', width: widthWindow - 200, marginBottom: 20 }]} onPress={() => this.save()}>
                             <Text style={[style.loginText, { color: 'white' }]}>Save</Text>
@@ -154,5 +136,4 @@ const mapStateToProps = state => {
         user: state.user,
     }
 }
-export default connect(mapStateToProps)(EditProfile);
-// export default EditProfile;
+export default connect(mapStateToProps)(EditProfileStore);

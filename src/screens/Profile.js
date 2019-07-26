@@ -96,7 +96,7 @@ class StoreProfile extends Component {
                     <View style={{ flexDirection: 'row' }}>
                         <ImageBackground style={style.imageBox} source={{ uri: this.props.user.image }} />
                         <TouchableOpacity style={style.imageBox2} 
-                             onPress={this._logOut}
+                             onPress={() => this._logOut()}
                         >
                             <ImageBackground  style={{height: 40, width: 40}} source={require('../Assets/Icons/log_out.png')} />
                         </TouchableOpacity>
