@@ -166,7 +166,8 @@ export const registerUser = (email,password,name,address,phone) => {
     }
 } 
 
-export const registerPartner = (email,password,name,address,phone,latitude, longitude) => {
+export const registerPartner = (email,password,name,address,phone, level,latitude, longitude) => {
+    console.warn(email,password,name,address,phone, level,latitude, longitude)
     return {
         type: 'POST_REGISTER',
         payload: axios.post(`${Url}/users/register`,
@@ -178,10 +179,11 @@ export const registerPartner = (email,password,name,address,phone,latitude, long
             address: address,
             phone: phone,
             latitude: latitude,
-            longitude: longitude
+            longitude: longitude,
+            level: level,
         },{ headers: { 'x-app-name': 'menung982998372771' }})
     }
-}
+}  
 
 exports.createTransaction = (endpoint, data, playerId, token) => {
     return {

@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, TextInput, SafeAreaView, Dimensions, View, TouchableOpacity, StatusBar, PermissionsAndroid, ScrollView } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from 'react-native-geolocation-service';
+import { connect } from 'react-redux';
+import { registerPartner } from '../../public/redux/actions/user';
+
 const { width, height } = Dimensions.get('window')
 const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.0060;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
-import { KeyboardAvoidingView } from 'react-native';
 
-export default class Mitra extends Component {
+class Mitra extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -30,14 +32,17 @@ export default class Mitra extends Component {
 			errPhone: false,
 			errPassword: false,
 			errValPassword: false,
+			level: 'partner',
 		}
 	}
 
 	handleSignUp = () => {
+		const { navigation } = this.props
 		if (this.state.name == '' || this.state.address == '' || this.state.email == '' || this.state.password == '' || this.state.phone == '' || this.state.varPassword == '' || this.state.errName !== false || this.state.errAddress !== false || this.state.errEmail !== false || this.state.errPassword !== false || this.state.errPhone !== false || this.state.errValPassword !== false) {
 			alert('Data yang anda masukkan salah')
 		} else {
-			// berhasil
+			const { email, password, name, address, phone, level, latitude, longitude } = this.state;
+			this.props.dispatch(registerPartner(email,password,name,address,phone, level,latitude, longitude)).then(() => alert("Tekan tombol kembali untuk masuk"))
 		}
 	}
 
@@ -108,7 +113,7 @@ export default class Mitra extends Component {
 	}
 
 	onChangePhone = (cPhone) => {
-		let reg = /^\d{12}$/;
+		let reg = /^\d{10,15}$/;
 		if (reg.test(cPhone) === false) {
 			this.setState({
 				phone: cPhone,
@@ -202,7 +207,7 @@ export default class Mitra extends Component {
 						<TextInput
 							placeholder="Nomer Telfon"
 							autoCapitalize="none"
-							keyboardType='name-phone-pad'
+							keyboardType='phone-pad'
 							style={[styles.textInput, { marginBottom: 10 }]}
 							onChangeText={this.onChangePhone}
 							value={this.state.phone}
@@ -276,6 +281,13 @@ export default class Mitra extends Component {
 		)
 	}
 }
+
+const mapStateToProps = state => {
+	return {
+		user: state.user,
+	}
+}
+export default connect(mapStateToProps)(Mitra)
 
 const styles = StyleSheet.create({
 	container: {
