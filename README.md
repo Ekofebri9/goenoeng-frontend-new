@@ -1,4 +1,3 @@
-<h1 align="center">Goenoeng</h1>
 <p align="center">
 <img src="https://raw.githubusercontent.com/Ekofebri9/goenoeng-frontend-new/master/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" width="200"></p>
 
