@@ -93,6 +93,12 @@ module.exports = StyleSheet.create({
         marginTop: 10,
         height: heightWindow /2
     },
+    photo: {
+      backgroundColor: '#EE4D2D',
+      height: 170,
+      alignItems: 'center',
+      // width: wp('100%')
+    },
     flatMountain: {
         width: '100%',
         // padding: 16,
@@ -317,14 +323,14 @@ module.exports = StyleSheet.create({
         height: 25,
         width: 25
       },
-      backgroundDown: {
-        height: heightWindow / 2,
-        width: widthWindow,
-        backgroundColor: 'white',
-        position: 'absolute',
-        top: heightWindow / 2,
-        zIndex: 1
-      },
+      // backgroundDown: {
+      //   height: heightWindow / 2,
+      //   width: widthWindow,
+      //   backgroundColor: 'white',
+      //   position: 'absolute',
+      //   top: heightWindow / 2,
+      //   zIndex: 1
+      // },
       detailTextBox:{
         flexDirection: 'row',
         borderColor: '#34c759',
@@ -384,7 +390,7 @@ module.exports = StyleSheet.create({
         shadowOpacity: 0.27,
         shadowRadius: 4.65,
     
-        elevation: 6,
+        // elevation: 6,
         top: heightWindow / 4,
         alignSelf: 'center',
         borderRadius: 10,
@@ -443,14 +449,35 @@ module.exports = StyleSheet.create({
         backgroundColor: 'rgba(45, 173, 78, 0.8)',
         // position: 'absolute',
         borderRadius: 10,
-        zIndex: 10,
-        marginTop: 20,
+        // zIndex: 10,
+        marginTop: 10,
         // bottom: 60,
-        elevation: 5,
+        // elevation: 5,
       },
       inputBox:{
         marginTop: 10, 
         marginLeft: 20
+      },
+      addBox: {
+        flexDirection: 'column', 
+        marginTop: 10, 
+        borderColor: '#03AC0E', 
+        borderWidth: 3, 
+        marginLeft: 15, 
+        marginRight: 15, 
+        borderRadius: 20,
+        height: heightWindow / 1.3,
+        // backgroundColor: 'blue'
+      },
+      inputBoxImage: {
+        height: 150,
+        width: 150,
+        backgroundColor: '#DDD',
+        borderRadius: 10,
+        overflow: "hidden"
+        // borderColo
+        // marginTop: 10, 
+        // marginLeft: 20
       },
       inputTextAdd: {
         fontSize:15, 

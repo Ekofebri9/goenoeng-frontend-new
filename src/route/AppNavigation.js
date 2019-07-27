@@ -18,6 +18,7 @@ import EditProfileStore from '../screens/EditProfileStore'
 import ManageProduct from '../screens/ManageProduct'
 import Transaction from '../screens/Transaction'
 import AddProduct from '../screens/AddProduct'
+import EditProduct from '../screens/EditProduct'
 import MountainDetail from '../screens/MountainDetail'
 import BookingMountain from '../screens/BookingMountain'
 import Chat from '../screens/Chat'
@@ -99,6 +100,9 @@ const AppNavigator = createStackNavigator({
   },
   AddProduct: {
     screen: AddProduct
+  },
+  EditProduct: {
+    screen: EditProduct
   },
   Mountain: {
     screen: Mountain
